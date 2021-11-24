@@ -7,6 +7,8 @@ export PASSWORD="Senha12_torne00"
 " >> ~/.bashrc
 source ~/.bashrc
 
+git clone --branch deploy-docker https://github.com/bocunha/spring-web-youtube.git
+
 cd spring-web-youtube/
 
 mvn package
