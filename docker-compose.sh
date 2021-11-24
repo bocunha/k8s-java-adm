@@ -21,8 +21,8 @@ COPY \${JAR_FILE} app.jar
 ENTRYPOINT ["java","-jar","/app.jar"]
 " > Dockerfile
 
-docker build -t bocunha/grupoone-springweb -f Dockerfile .
-docker tag bocunha/grupoone-springweb hub.docker.com/r/bocunha/grupoone-springweb
-docker push bocunha/grupoone-springweb
+sudo docker build -t bocunha/grupoone-springweb -f Dockerfile .
+sudo docker tag bocunha/grupoone-springweb hub.docker.com/r/bocunha/grupoone-springweb
+sudo docker push bocunha/grupoone-springweb
 
 #### SEGUE PARA O DEPLOY NO POD
