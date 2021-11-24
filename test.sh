@@ -2,7 +2,7 @@
 ## VARIAVEIS
 PODPATH="$PWD"
 CHAVESSH="/var/lib/jenkins/.ssh/grupo-one.pem"
-ID_M1_DNS=`grep ID_M1_DNS /tmp/ipmasters | cut -d"=" -f2`
+ID_M1_DNS=`grep ID_M1_DNS /tmp/ipmasters.tmp | cut -d"=" -f2`
 ###########################
 
 $CHKJAVA=$(curl -Sk $ID_M1_DNS:30002)

@@ -26,6 +26,6 @@ data:
   USER: root
   # PASSWORD: password_mysql
   DATABASE_URL: mysql://${ID_MYSQL_PROD}:3306/SpringWebYoutube
-" > $PODPATH/mysql-config/mysql-configmap_prod.yml
+" > $PODPATH/app-config/mysql-configmap_prod.yml
 
 ansible-playbook -i hosts prod.yml -u ubuntu --private-key ${CHAVESSH}
