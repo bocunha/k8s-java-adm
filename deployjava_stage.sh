@@ -29,3 +29,5 @@ data:
 " > $PODPATH/app-config/mysql-configmap_stage.yml
 
 ansible-playbook -i hosts prod.yml -u ubuntu --private-key ${CHAVESSH}
+
+sleep 30
