@@ -28,6 +28,6 @@ data:
   DATABASE_URL: mysql://${ID_MYSQL_STAGE}:3306/SpringWebYoutube
 " > $PODPATH/app-config/mysql-configmap_stage.yml
 
-ansible-playbook -i hosts prod.yml -u ubuntu --private-key ${CHAVESSH}
+ansible-playbook -i hosts stage.yml -u ubuntu --private-key ${CHAVESSH}
 
 sleep 30
