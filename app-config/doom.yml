@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: doom
+spec:
+  ports:
+  - port: 6901
+  selector:
+    app: doom
+  clusterIP: None # Selecione o nome meno do serviço, ex http://mysql:3306
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: doom
+spec:
+  selector:
+    matchLabels:
+      app: doom
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: doom
+    spec:
+      containers:
+      - image: kasmweb/doom:1.10.0-rolling
+        name: doom
+        env:
+        - name: VNC_PW
+          value: "password kasmweb/"
+        ports:
+        - containerPort: 6901
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nodeport-doom
+spec:
+  type: NodePort
+  ports:
+    - port: 6901
+      nodePort: 30002 # 30000 ~ 32767
+  selector:
+    app: doom

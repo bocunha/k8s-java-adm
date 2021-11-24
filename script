@@ -1,0 +1,15 @@
+=============================================== PARA CRIAR O DOCKER
+
+git clone
+mvn package
+./mvnw package && java -jar target/grupoone-springweb.jar
+criar Dockerfile
+sudo docker build -t bocunha/grupoone-springweb -f Dockerfile .
+sudo docker tag bocunha/grupoone-springweb hub.docker.com/r/bocunha/grupoone-springweb
+sudo docker push bocunha/grupoone-springweb
+
+###################################################
+baixa docker no pod do k8s
+cria banco de dados no mysql
+nodeport
+deployment
