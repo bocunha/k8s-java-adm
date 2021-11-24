@@ -1,0 +1,38 @@
+pipeline {
+    agent any
+
+    parameters {
+        string(name: 'DECISION', defaultValue: 'deploy', description: 'Decidir se sera deploy ou destroy [deploy]')
+        choice(name: 'DECISION', choices: ['deploy', 'destroy'])
+    }
+
+    stages {
+        stage('Clone do Repositório Scripts') {
+            steps {
+                git url: 'https://github.com/bocunha/k8s-java-adm.git', branch: 'main'
+            }
+        }
+
+    stages {
+        stage('Clone do Repositório Aplicacao Java') {
+            steps {
+                git url: 'https://github.com/bocunha/spring-web-youtube.git', branch: 'deploy-docker'
+            }
+        }
+
+        stage('Executando do docker compose') {
+            steps {
+                sh "./docker-compose.sh"
+            }
+        }
+        stage('Realizando o deploy das aplicações no k8s') {
+            steps {
+                sh "./deployjava.sh"
+            }
+        stage('Testando se a aplicação esta no ar') {
+            steps {
+                sh "./test.sh"
+            }
+        }
+    }
+}
