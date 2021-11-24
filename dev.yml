@@ -1,0 +1,21 @@
+- hosts: all
+  become: yes
+  tasks:
+    - name: "Upload yml files"
+      copy:
+        src: "app-config"
+        dest: "/root/"
+    
+    - name: "Aplicar configmap"
+      shell: kubectl apply -f /root/app-config/mysql-configmap_dev.yml
+
+    - name: "Aplicar deployment"
+      shell: kubectl apply -f /root/app-config/deployment_dev.yml
+
+    - name: "Aplicar nodeport"
+      shell: kubectl apply -f /root/app-config/nodeport-javadb_dev.yml
+
+    - shell: "kubectl get pods"
+      register: ps
+    - debug:
+        msg: " '{{ ps.stdout_lines }}' "

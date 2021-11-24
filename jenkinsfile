@@ -12,9 +12,24 @@
                     sh "./docker-compose.sh"
                 }
             }
-            stage('Realizando o deploy das aplicações no k8s') {
+            stage('Realizando o deploy das aplicações no k8s POD DEV') {
                 steps {
-                    sh "./deployjava.sh"
+                    sh "./deployjava_dev.sh"
+                }
+            }
+            stage('Testando se a aplicação esta no ar DEV') {
+                steps {
+                    sh "./testdev.sh"
+                }
+            }
+            stage('Realizando o deploy das aplicações no k8s POD STAGE') {
+                steps {
+                    sh "./deployjava_stage.sh"
+                }
+            }
+            stage('Realizando o deploy das aplicações no k8s POD PROD') {
+                steps {
+                    sh "./deployjava_prod.sh"
                 }
             }
             stage('Testando se a aplicação esta no ar') {

@@ -12,14 +12,16 @@ git clone --branch deploy-docker https://github.com/bocunha/spring-web-youtube.g
 cd spring-web-youtube/
 
 mvn package
-./mvnw package && java -jar target/grupoone-springweb.jar
+./mvnw package && java -jar ./target/SpringWeb-1.0.0.jar
 
 echo "
 FROM openjdk:8-jdk-alpine
 ARG JAR_FILE=target/*.jar
 COPY \${JAR_FILE} app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
+ENTRYPOINT [\"java\",\"-jar\",\"/app.jar\"]
 " > Dockerfile
+
+echo Dockerfile
 
 docker build -t bocunha/grupoone-springweb -f Dockerfile .
 docker tag bocunha/grupoone-springweb hub.docker.com/r/bocunha/grupoone-springweb
