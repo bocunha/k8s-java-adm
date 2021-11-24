@@ -21,7 +21,7 @@ echo "
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: mysql-configmap
+  name: mysql-configmap-prod
 data:
   USER: root
   # PASSWORD: password_mysql
