@@ -27,14 +27,19 @@
                     sh "./deployjava_stage.sh"
                 }
             }
+            stage('Testando se a aplicação esta no ar STAGE') {
+                steps {
+                    sh "./teststage.sh"
+                }
+            }
             stage('Realizando o deploy das aplicações no k8s POD PROD') {
                 steps {
                     sh "./deployjava_prod.sh"
                 }
             }
-            stage('Testando se a aplicação esta no ar') {
+            stage('Testando se a aplicação esta no ar PROD') {
                 steps {
-                    sh "./test.sh"
+                    sh "./testprod.sh"
                 }
             }
         }
