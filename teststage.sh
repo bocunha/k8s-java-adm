@@ -5,9 +5,11 @@ CHAVESSH="/var/lib/jenkins/.ssh/grupo-one.pem"
 ID_M1_DNS=`grep ID_M1_DNS /tmp/ipmasters.tmp | cut -d"=" -f2`
 ###########################
 
-$CHKJAVA=$(curl -v $ID_M1_DNS:30003 | grep 302 | wc -l)
+curl -v $ID_M1_DNS:30003
+
 #PEGA O ESTADO DO TERRAFORM
-if [[ $CHKJAVA -eq 1 ]]
+
+if [[ $? -eq 0 ]]
 then 
     echo "::::: server está no ar :::::"
     exit 0
