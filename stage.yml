@@ -9,6 +9,9 @@
     - name: "Aplicar configmap"
       shell: kubectl apply -f /root/app-config/mysql-configmap_stage.yml
 
+    - name: "Aplicar secret"
+      shell: kubectl apply -f /root/app-config/mysql-secret.yml
+
     - name: "Aplicar deployment"
       shell: kubectl apply -f /root/app-config/deployment_stage.yml
 
