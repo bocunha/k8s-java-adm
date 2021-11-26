@@ -56,6 +56,9 @@ Edite on arquivos **.sh**:
 Edite o arquivo **jenkinsfile**:
 - Alterar URL do projeto do Git que está usando no estágio "Clone do Repositório";
 
+Com isso, criar uma esteira no Jenkins com os estágios do arquivo.
+
+Para rodar ou matar o processo, pode-se utilizar o comando abaixo:
 ```
 ./mvnw spring-boot:start
 
